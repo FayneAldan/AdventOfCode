@@ -1,4 +1,5 @@
-import { toHand, calcScore, Hand, Outcome, calcOutcome } from "./rps.ts";
+import { toHand, calcScore, Hand, Outcome, calcOutcome } from "./common.ts";
+import { add } from "lodash";
 
 const input = Deno.readTextFileSync(new URL("input.txt", import.meta.url))
   .replace(/\r/g, "")
@@ -22,10 +23,10 @@ function calcHandNeeded(outcome: Outcome, them: Hand): Hand {
   else return Hand.Scissors;
 }
 
-const array = input
+const results = input
   .split("\n")
   .map((v) => v.split(" "))
   .map((v) => <[Hand, Outcome]>[toHand(v[0]), toOutcome(v[1])])
   .map((v) => calcScore(calcHandNeeded(v[1], v[0]), v[0]))
-  .reduce((sum, n) => sum + n);
-console.log(array);
+  .reduce(add);
+console.log(results);
