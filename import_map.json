@@ -1,5 +1,6 @@
 {
   "imports": {
-    "lodash": "npm:lodash-es"
+    "lodash": "npm:lodash-es",
+    "std/": "https://deno.land/std@0.167.0/"
   }
 }
